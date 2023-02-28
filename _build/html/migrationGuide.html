@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PolyScope 6 URCap Migration Guide &mdash; URCapX Migration Guide 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to URCapX Migration Guide’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> URCapX Migration Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PolyScope 6 URCap Migration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy-mydaemonswing-example">Copy MyDaemonSwing Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updated-structure">Updated Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#restructure-urcap-project">Restructure URCap Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#manifest-file">Manifest file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#artifacts">Artifacts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#add-license-file">Add License File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adjust-artifacts">Adjust Artifacts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#daemon-cpp">daemon-cpp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#daemon-py">daemon-py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polyscope-ui">polyscope-ui</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mydaemonswing-polyscope-ui-pom-xml">mydaemonswing/polyscope-ui/pom.xml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#java-api">Java API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mydaemondaemonservice-java">MyDaemonDaemonService.java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activator-java">Activator.java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mydaemoninstallationnodecontribution-java">MyDaemonInstallationNodeContribution.java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xmlrpcmydaemoninterface-java">XmlrpcMyDaemonInterface.java</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-and-deploy">Build and Deploy</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">URCapX Migration Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>PolyScope 6 URCap Migration Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/migrationGuide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="polyscope-6-urcap-migration-guide">
+<h1>PolyScope 6 URCap Migration Guide<a class="headerlink" href="#polyscope-6-urcap-migration-guide" title="Permalink to this headline">¶</a></h1>
+<p>This guide will demonstrate the steps needed to migrate a PolyScope 5 URCap project into a PolyScope 6 URCapX project.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Set up the development environment by following steps one through four of the <a class="reference external" href="https://universalrobots-my.sharepoint.com/personal/jbd_universal-robots_com/_layouts/15/onedrive.aspx?ct=1674616361175&amp;or=Teams%2DHL&amp;ga=1&amp;id=%2Fpersonal%2Fjbd%5Funiversal%2Drobots%5Fcom%2FDocuments%2FUR%2B%20engineers%20prep%2Furcapx%2Ddev%2Furcapx%2Ddeveloper%2Dguide%2Ehtml&amp;parent=%2Fpersonal%2Fjbd%5Funiversal%2Drobots%5Fcom%2FDocuments%2FUR%2B%20engineers%20prep%2Furcapx%2Ddev">User Guide for URCapX Development</a>.</p>
+</div>
+<div class="section" id="copy-mydaemonswing-example">
+<h2>Copy MyDaemonSwing Example<a class="headerlink" href="#copy-mydaemonswing-example" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open the VSCode terminal. This can be toggled with <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">j</span></code> on Windows and Linux, and <code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">+</span> <span class="pre">j</span></code> for MacOS.</p></li>
+<li><p>Copy MyDaemonSwing to your workspace by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span> <span class="c1"># /workspaces/urcapx-dev</span>
+cp -r /tmp/sdk/samples/swing/com.ur.urcap.examples.mydaemonswing mydaemonswing <span class="o">&amp;&amp;</span> <span class="nb">cd</span> mydaemonswing
+</pre></div>
+</div>
+</div>
+<div class="section" id="updated-structure">
+<h2>Updated Structure<a class="headerlink" href="#updated-structure" title="Permalink to this headline">¶</a></h2>
+<p>The URCapX project is a multi-module Maven project that adds the original URCap project as a child Maven module.</p>
+<div class="section" id="restructure-urcap-project">
+<h3>Restructure URCap Project<a class="headerlink" href="#restructure-urcap-project" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Create folders for the artifacts in the sample by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir daemon-cpp daemon-py polyscope-ui
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Move the daemon folder to the daemon-cpp folder by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv daemon/ daemon-cpp/
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Move the <em>hello-world.py</em> file to the daemon-py folder by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv src/main/resources/com/ur/urcap/examples/mydaemonswing/impl/daemon/hello-world.py daemon-py/
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Move the <em>pom.xml</em> file, src folder, and target folder into the polyscope-ui folder by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv src target polyscope-ui/ <span class="o">&amp;&amp;</span> mv pom.xml polyscope-ui/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="manifest-file">
+<h2>Manifest file<a class="headerlink" href="#manifest-file" title="Permalink to this headline">¶</a></h2>
+<p>Create a new file named <em>manifest.yaml</em>. Here is the manifest.yaml file for this specific example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.0</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="nt">vendorID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">universal-robots</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="nt">urcapID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dockerdaemon</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0&quot;</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="nt">vendorName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Universal Robots</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nt">urcapName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Daemon Swing</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="nt">contactInfo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Energivej 25, 5260 Odense S, Denmark</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Daemon Sample URCap</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="nt">startup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="nt">copyright</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copyright (c) 2009-2021 Universal Robots. All rights reserved.</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="nt">licenseType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample license</span><span class="w"></span>
+<span class="linenos">13</span><span class="nt">artifacts</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">    </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daemon-cpp</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daemon-cpp:1.0</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">    </span><span class="nt">ingress</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xmlrpc</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40405</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">        </span><span class="nt">proxyUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daemon-py</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daemon-py:1.0</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xmlrpc</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40405</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">protocol</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">proxyUrl</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">    </span><span class="nt">osgiBundles</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">polyscope-ui</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">    </span><span class="nt">bundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">polyscope-ui-1.0-SNAPSHOT.jar</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="section" id="artifacts">
+<h3>Artifacts<a class="headerlink" href="#artifacts" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>osgiBundles</dt><dd><p>Specifies a list of java frontend contributions in osgi jar format</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Field</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>name to identify the artifact</p></td>
+</tr>
+<tr class="row-odd"><td><p>bundle</p></td>
+<td><p>name of the jar bundle file</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>containers</dt><dd><p>Specifies a list of container contributions</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Field</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>name to identify the artifact</p></td>
+</tr>
+<tr class="row-odd"><td><p>image</p></td>
+<td><p>name of docker file</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>ingress</dt><dd><p>A list of container network configurations, each configuration consists of: name, port, protocol and proxyUrl. The service configured in the ingress will be reachable at a URL defined using this template: &lt;vendorID&gt;/&lt;urcapID&gt;/&lt;container-name&gt;/&lt;ingress-name&gt;. In the above example the REST endpoint can be accessed at: universal-robots/mydaemonswing/daemon-py/xmlrpc/.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Field</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>Name used to reach the service or websocket</p></td>
+</tr>
+<tr class="row-odd"><td><p>port</p></td>
+<td><p>Container port of the http server in the container</p></td>
+</tr>
+<tr class="row-even"><td><p>protocol</p></td>
+<td><p>Specifies the communication protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p>proxyUrl</p></td>
+<td><p>Specifies the URL being forwarded to</p></td>
+</tr>
+<tr class="row-even"><td><p>volumeMounts</p></td>
+<td><p>List of volumes (mountPath) that will be available in the docker container</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="add-license-file">
+<h2>Add License File<a class="headerlink" href="#add-license-file" title="Permalink to this headline">¶</a></h2>
+<p>A license file is required for the URCap to be valid.</p>
+<p>Create a file called LICENSE in the root of the mydaemonswing project.</p>
+<p>Here is an example template for a LICENSE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">year</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">copyright</span> <span class="n">holder</span><span class="o">&gt;</span>
+<span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
+
+<span class="n">Redistribution</span> <span class="ow">and</span> <span class="n">use</span> <span class="ow">in</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">binary</span> <span class="n">forms</span><span class="p">,</span> <span class="k">with</span> <span class="ow">or</span> <span class="n">without</span>
+<span class="n">modification</span><span class="p">,</span> <span class="n">are</span> <span class="n">permitted</span> <span class="n">provided</span> <span class="n">that</span> <span class="n">the</span> <span class="n">following</span> <span class="n">conditions</span> <span class="n">are</span> <span class="n">met</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Redistributions</span> <span class="n">of</span> <span class="n">source</span> <span class="n">code</span> <span class="n">must</span> <span class="n">retain</span> <span class="n">the</span> <span class="n">above</span> <span class="n">copyright</span>
+<span class="n">notice</span><span class="p">,</span> <span class="n">this</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">conditions</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">following</span> <span class="n">disclaimer</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">Redistributions</span> <span class="ow">in</span> <span class="n">binary</span> <span class="n">form</span> <span class="n">must</span> <span class="n">reproduce</span> <span class="n">the</span> <span class="n">above</span> <span class="n">copyright</span>
+<span class="n">notice</span><span class="p">,</span> <span class="n">this</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">conditions</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">following</span> <span class="n">disclaimer</span> <span class="ow">in</span> <span class="n">the</span>
+<span class="n">documentation</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">other</span> <span class="n">materials</span> <span class="n">provided</span> <span class="k">with</span> <span class="n">the</span> <span class="n">distribution</span><span class="o">.</span>
+<span class="mf">3.</span> <span class="n">All</span> <span class="n">advertising</span> <span class="n">materials</span> <span class="n">mentioning</span> <span class="n">features</span> <span class="ow">or</span> <span class="n">use</span> <span class="n">of</span> <span class="n">this</span> <span class="n">software</span>
+<span class="n">must</span> <span class="n">display</span> <span class="n">the</span> <span class="n">following</span> <span class="n">acknowledgement</span><span class="p">:</span>
+<span class="n">This</span> <span class="n">product</span> <span class="n">includes</span> <span class="n">software</span> <span class="n">developed</span> <span class="n">by</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">organization</span><span class="o">&gt;.</span>
+<span class="mf">4.</span> <span class="n">Neither</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">organization</span><span class="o">&gt;</span> <span class="n">nor</span> <span class="n">the</span>
+<span class="n">names</span> <span class="n">of</span> <span class="n">its</span> <span class="n">contributors</span> <span class="n">may</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">endorse</span> <span class="ow">or</span> <span class="n">promote</span> <span class="n">products</span>
+<span class="n">derived</span> <span class="kn">from</span> <span class="nn">this</span> <span class="n">software</span> <span class="n">without</span> <span class="n">specific</span> <span class="n">prior</span> <span class="n">written</span> <span class="n">permission</span><span class="o">.</span>
+
+<span class="n">THIS</span> <span class="n">SOFTWARE</span> <span class="n">IS</span> <span class="n">PROVIDED</span> <span class="n">BY</span> <span class="o">&lt;</span><span class="n">COPYRIGHT</span> <span class="n">HOLDER</span><span class="o">&gt;</span> <span class="s1">&#39;&#39;</span><span class="n">AS</span> <span class="n">IS</span><span class="s1">&#39;&#39;</span> <span class="n">AND</span> <span class="n">ANY</span>
+<span class="n">EXPRESS</span> <span class="n">OR</span> <span class="n">IMPLIED</span> <span class="n">WARRANTIES</span><span class="p">,</span> <span class="n">INCLUDING</span><span class="p">,</span> <span class="n">BUT</span> <span class="n">NOT</span> <span class="n">LIMITED</span> <span class="n">TO</span><span class="p">,</span> <span class="n">THE</span> <span class="n">IMPLIED</span>
+<span class="n">WARRANTIES</span> <span class="n">OF</span> <span class="n">MERCHANTABILITY</span> <span class="n">AND</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span> <span class="n">ARE</span>
+<span class="n">DISCLAIMED</span><span class="o">.</span> <span class="n">IN</span> <span class="n">NO</span> <span class="n">EVENT</span> <span class="n">SHALL</span> <span class="o">&lt;</span><span class="n">COPYRIGHT</span> <span class="n">HOLDER</span><span class="o">&gt;</span> <span class="n">BE</span> <span class="n">LIABLE</span> <span class="n">FOR</span> <span class="n">ANY</span>
+<span class="n">DIRECT</span><span class="p">,</span> <span class="n">INDIRECT</span><span class="p">,</span> <span class="n">INCIDENTAL</span><span class="p">,</span> <span class="n">SPECIAL</span><span class="p">,</span> <span class="n">EXEMPLARY</span><span class="p">,</span> <span class="n">OR</span> <span class="n">CONSEQUENTIAL</span> <span class="n">DAMAGES</span>
+<span class="p">(</span><span class="n">INCLUDING</span><span class="p">,</span> <span class="n">BUT</span> <span class="n">NOT</span> <span class="n">LIMITED</span> <span class="n">TO</span><span class="p">,</span> <span class="n">PROCUREMENT</span> <span class="n">OF</span> <span class="n">SUBSTITUTE</span> <span class="n">GOODS</span> <span class="n">OR</span> <span class="n">SERVICES</span><span class="p">;</span>
+<span class="n">LOSS</span> <span class="n">OF</span> <span class="n">USE</span><span class="p">,</span> <span class="n">DATA</span><span class="p">,</span> <span class="n">OR</span> <span class="n">PROFITS</span><span class="p">;</span> <span class="n">OR</span> <span class="n">BUSINESS</span> <span class="n">INTERRUPTION</span><span class="p">)</span> <span class="n">HOWEVER</span> <span class="n">CAUSED</span> <span class="n">AND</span>
+<span class="n">ON</span> <span class="n">ANY</span> <span class="n">THEORY</span> <span class="n">OF</span> <span class="n">LIABILITY</span><span class="p">,</span> <span class="n">WHETHER</span> <span class="n">IN</span> <span class="n">CONTRACT</span><span class="p">,</span> <span class="n">STRICT</span> <span class="n">LIABILITY</span><span class="p">,</span> <span class="n">OR</span> <span class="n">TORT</span>
+<span class="p">(</span><span class="n">INCLUDING</span> <span class="n">NEGLIGENCE</span> <span class="n">OR</span> <span class="n">OTHERWISE</span><span class="p">)</span> <span class="n">ARISING</span> <span class="n">IN</span> <span class="n">ANY</span> <span class="n">WAY</span> <span class="n">OUT</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">USE</span> <span class="n">OF</span> <span class="n">THIS</span>
+<span class="n">SOFTWARE</span><span class="p">,</span> <span class="n">EVEN</span> <span class="n">IF</span> <span class="n">ADVISED</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">POSSIBILITY</span> <span class="n">OF</span> <span class="n">SUCH</span> <span class="n">DAMAGE</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adjust-artifacts">
+<h2>Adjust Artifacts<a class="headerlink" href="#adjust-artifacts" title="Permalink to this headline">¶</a></h2>
+<p>Each artifact needs to be adjusted for the new build tool, and the updated Java API.</p>
+<div class="section" id="daemon-cpp">
+<h3>daemon-cpp<a class="headerlink" href="#daemon-cpp" title="Permalink to this headline">¶</a></h3>
+<p>A Dockerfile is needed to compile and package the C++ daemon as a Docker image.</p>
+<p><em>Note: The Docker daemon sample will compile the C++ image with the CMAKE tool. However, this migration example is done with minimal changes, and still uses SCons. This project will genereate a warning due to the absence of urtool, but will not be an issue becuse it is running inside a container with an updated ABI.</em></p>
+<p>Create a file called Dockerfile in the <em>daemon-cpp</em> folder that was created in the URCap restructuring.</p>
+<p>The Dockerfile should contain the following:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">FROM</span><span class="w"> </span><span class="s">i386/alpine:3.10</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder</span>
+<span class="linenos"> 2</span><span class="k">LABEL</span><span class="w"> </span><span class="nv">description</span><span class="o">=</span><span class="s2">&quot;Build container&quot;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">RUN</span><span class="w"> </span>apk update <span class="o">&amp;&amp;</span> apk add --no-cache <span class="se">\</span>
+<span class="linenos"> 5</span>    build-base <span class="se">\</span>
+<span class="linenos"> 6</span>    scons
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">RUN</span><span class="w"> </span>apk add --no-cache <span class="se">\</span>
+<span class="linenos">10</span>    xmlrpc-c-dev <span class="se">\</span>
+<span class="linenos">11</span>    curl-dev
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c"># Copy source files</span>
+<span class="linenos">14</span><span class="k">COPY</span><span class="w"> </span>daemon/ /usr/local/src/hello-world/
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c"># Specify the working directory</span>
+<span class="linenos">17</span><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/local/src/hello-world/</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c"># Compile daemon</span>
+<span class="linenos">20</span><span class="k">RUN</span><span class="w"> </span>scons -c
+<span class="linenos">21</span><span class="k">RUN</span><span class="w"> </span>scons <span class="nv">release</span><span class="o">=</span><span class="m">1</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="k">FROM</span><span class="w"> </span><span class="s">i386/alpine:3.10</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">runtime</span>
+<span class="linenos">24</span><span class="k">LABEL</span><span class="w"> </span><span class="nv">description</span><span class="o">=</span><span class="s2">&quot;Run container&quot;</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c"># Update apps on the base image</span>
+<span class="linenos">27</span><span class="k">RUN</span><span class="w"> </span>apk update <span class="o">&amp;&amp;</span> apk add --no-cache <span class="se">\</span>
+<span class="linenos">28</span>    tini <span class="se">\</span>
+<span class="linenos">29</span>    libstdc++ <span class="se">\</span>
+<span class="linenos">30</span>    xmlrpc-c++
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="k">RUN</span><span class="w"> </span>mkdir /usr/local/daemon
+<span class="linenos">33</span><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder /usr/local/src/hello-world/HelloWorld /usr/local/daemon/HelloWorld
+<span class="linenos">34</span><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/local/daemon</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/sbin/tini&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-v&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--&quot;</span><span class="p">]</span>
+<span class="linenos">37</span><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;./HelloWorld&quot;</span><span class="p">]</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="k">EXPOSE</span><span class="w"> </span><span class="s">40405</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="daemon-py">
+<h3>daemon-py<a class="headerlink" href="#daemon-py" title="Permalink to this headline">¶</a></h3>
+<p>A Dockerfile is needed to package the python daemon as a Docker image.</p>
+<p>Create a file called Dockerfile in the <em>daemon-cpp</em> folder that was created in the URCap restructuring.</p>
+<p>The Dockerfile should contain the following:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.10-alpine</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">ENV</span><span class="w"> </span>APP_NAME dockerdaemon
+<span class="linenos">4</span><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/local/src/${APP_NAME}</span>
+<span class="linenos">5</span><span class="k">COPY</span><span class="w"> </span>hello-world.py .
+<span class="linenos">6</span><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello-world.py&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="linenos">7</span><span class="k">EXPOSE</span><span class="w"> </span><span class="s">40405</span>
+</pre></div>
+</div>
+<p>In order to run the Python3 imports, append the following lines of code to the <em>hello-world.py</em>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="kn">from</span> <span class="nn">xmlrpc.server</span> <span class="kn">import</span> <span class="n">SimpleXMLRPCServer</span>
+<span class="linenos">3</span>    <span class="kn">from</span> <span class="nn">socketserver</span> <span class="kn">import</span> <span class="n">ThreadingMixIn</span>
+<span class="linenos">4</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="kn">from</span> <span class="nn">SimpleXMLRPCServer</span> <span class="kn">import</span> <span class="n">SimpleXMLRPCServer</span>
+<span class="linenos">6</span>    <span class="kn">from</span> <span class="nn">SocketServer</span> <span class="kn">import</span> <span class="n">ThreadingMixIn</span>
+</pre></div>
+</div>
+<p>The IP Address of the <em>MultithreadedSimpleXMLRPCServer</em> needs to be changed from localhost (127.0.0.1) to 0.0.0.0. This will bind all external facing interfaces to the container.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">server</span> <span class="o">=</span> <span class="n">MultithreadedSimpleXMLRPCServer</span><span class="p">((</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">40405</span><span class="p">))</span>  <span class="c1"># Adjust IP-address from localhost to 0.0.0.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="polyscope-ui">
+<h3>polyscope-ui<a class="headerlink" href="#polyscope-ui" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="mydaemonswing-polyscope-ui-pom-xml">
+<h4>mydaemonswing/polyscope-ui/pom.xml<a class="headerlink" href="#mydaemonswing-polyscope-ui-pom-xml" title="Permalink to this headline">¶</a></h4>
+<p>The compliation of the C++ daemon is now handled by the <em>urcapctl</em> tool. The <em>pom.xml</em> file in the <em>polyscope-ui</em> directory needs to be updated to reflect this.
+The <strong>artifactId</strong> and <strong>name</strong> need to be updated to match the URCapX manifest file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;groupId&gt;</span>com.ur.urcap.examples<span class="nt">&lt;/groupId&gt;</span>
+<span class="linenos">2</span><span class="nt">&lt;artifactId&gt;</span>polyscope-ui<span class="nt">&lt;/artifactId&gt;</span>
+<span class="linenos">3</span><span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+<span class="linenos">4</span><span class="nt">&lt;name&gt;</span>polyscope-ui<span class="nt">&lt;/name&gt;</span>
+<span class="linenos">5</span><span class="nt">&lt;packaging&gt;</span>bundle<span class="nt">&lt;/packaging&gt;</span>
+</pre></div>
+</div>
+<p>The Java API calls need to be changed to control and get the status of the Docker daemon:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">&lt;plugin&gt;</span>
+<span class="linenos"> 2</span>    <span class="nt">&lt;configuration&gt;</span>
+<span class="linenos"> 3</span>        <span class="nt">&lt;instructions&gt;</span>
+<span class="linenos"> 4</span>                ...
+<span class="linenos"> 5</span>                <span class="nt">&lt;Import-Package&gt;</span>
+<span class="linenos"> 6</span>                    com.ur.urcap.api*,
+<span class="linenos"> 7</span>                    *
+<span class="linenos"> 8</span>                <span class="nt">&lt;/Import-Package&gt;</span>
+<span class="linenos"> 9</span>            <span class="nt">&lt;Embed-Dependency&gt;</span>xmlrpc-client<span class="nt">&lt;/Embed-Dependency&gt;</span> <span class="cm">&lt;!--Add this line to the api package import--&gt;</span>
+<span class="linenos">10</span>            <span class="nt">&lt;Embed-Transitive&gt;</span>true<span class="nt">&lt;/Embed-Transitive&gt;</span> <span class="cm">&lt;!--Add this line to the api package import--&gt;</span>
+<span class="linenos">11</span>        <span class="nt">&lt;/instructions&gt;</span>
+<span class="linenos">12</span>    <span class="nt">&lt;/configuration&gt;</span>
+<span class="linenos">13</span><span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+</div>
+<p>The C++ daemon should no longer be compiled. Remove the following lines:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">&lt;execution&gt;</span>
+<span class="linenos"> 2</span>    <span class="nt">&lt;id&gt;</span>clean-daemon<span class="nt">&lt;/id&gt;</span>
+<span class="linenos"> 3</span>    <span class="nt">&lt;phase&gt;</span>clean<span class="nt">&lt;/phase&gt;</span>
+<span class="linenos"> 4</span>    <span class="nt">&lt;goals&gt;</span>
+<span class="linenos"> 5</span>        <span class="nt">&lt;goal&gt;</span>exec<span class="nt">&lt;/goal&gt;</span>
+<span class="linenos"> 6</span>    <span class="nt">&lt;/goals&gt;</span>
+<span class="linenos"> 7</span>    <span class="nt">&lt;configuration&gt;</span>
+<span class="linenos"> 8</span>        <span class="nt">&lt;executable&gt;</span>scons<span class="nt">&lt;/executable&gt;</span>
+<span class="linenos"> 9</span>        <span class="nt">&lt;arguments&gt;</span>
+<span class="linenos">10</span>            <span class="nt">&lt;argument&gt;</span>-c<span class="nt">&lt;/argument&gt;</span>
+<span class="linenos">11</span>        <span class="nt">&lt;/arguments&gt;</span>
+<span class="linenos">12</span>        <span class="nt">&lt;workingDirectory&gt;</span>./daemon<span class="nt">&lt;/workingDirectory&gt;</span>
+<span class="linenos">13</span>    <span class="nt">&lt;/configuration&gt;</span>
+<span class="linenos">14</span><span class="nt">&lt;/execution&gt;</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="nt">&lt;execution&gt;</span>
+<span class="linenos">17</span>    <span class="nt">&lt;id&gt;</span>compile-daemon<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">18</span>    <span class="nt">&lt;phase&gt;</span>compile<span class="nt">&lt;/phase&gt;</span>
+<span class="linenos">19</span>    <span class="nt">&lt;goals&gt;</span>
+<span class="linenos">20</span>        <span class="nt">&lt;goal&gt;</span>exec<span class="nt">&lt;/goal&gt;</span>
+<span class="linenos">21</span>    <span class="nt">&lt;/goals&gt;</span>
+<span class="linenos">22</span>    <span class="nt">&lt;configuration&gt;</span>
+<span class="linenos">23</span>        <span class="nt">&lt;executable&gt;</span>scons<span class="nt">&lt;/executable&gt;</span>
+<span class="linenos">24</span>        <span class="nt">&lt;arguments&gt;</span>
+<span class="linenos">25</span>            <span class="nt">&lt;argument&gt;</span>release=1<span class="nt">&lt;/argument&gt;</span>
+<span class="linenos">26</span>        <span class="nt">&lt;/arguments&gt;</span>
+<span class="linenos">27</span>        <span class="nt">&lt;workingDirectory&gt;</span>./daemon<span class="nt">&lt;/workingDirectory&gt;</span>
+<span class="linenos">28</span>    <span class="nt">&lt;/configuration&gt;</span>
+<span class="linenos">29</span><span class="nt">&lt;/execution&gt;</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="nt">&lt;execution&gt;</span>
+<span class="linenos">32</span>    <span class="nt">&lt;id&gt;</span>copy-daemon<span class="nt">&lt;/id&gt;</span>
+<span class="linenos">33</span>    <span class="nt">&lt;phase&gt;</span>compile<span class="nt">&lt;/phase&gt;</span>
+<span class="linenos">34</span>    <span class="nt">&lt;goals&gt;</span>
+<span class="linenos">35</span>        <span class="nt">&lt;goal&gt;</span>exec<span class="nt">&lt;/goal&gt;</span>
+<span class="linenos">36</span>    <span class="nt">&lt;/goals&gt;</span>
+<span class="linenos">37</span>    <span class="nt">&lt;configuration&gt;</span>
+<span class="linenos">38</span>        <span class="nt">&lt;executable&gt;</span>cp<span class="nt">&lt;/executable&gt;</span>
+<span class="linenos">39</span>        <span class="nt">&lt;commandlineArgs&gt;</span>daemon/HelloWorld src/main/resources/com/ur/urcap/examples/mydaemonswing/impl/daemon/<span class="nt">&lt;/commandlineArgs&gt;</span>
+<span class="linenos">40</span>        <span class="nt">&lt;workingDirectory&gt;</span>.<span class="nt">&lt;/workingDirectory&gt;</span>
+<span class="linenos">41</span>    <span class="nt">&lt;/configuration&gt;</span>
+<span class="linenos">42</span><span class="nt">&lt;/execution&gt;</span>
+</pre></div>
+</div>
+<p>Adjust the URCap API version by changing the version from 1.3.0 to 1.13.9. The dependency section should resemble the following:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;dependency&gt;</span>
+<span class="linenos">2</span>    <span class="nt">&lt;groupId&gt;</span>com.ur.urcap<span class="nt">&lt;/groupId&gt;</span>
+<span class="linenos">3</span>    <span class="nt">&lt;artifactId&gt;</span>api<span class="nt">&lt;/artifactId&gt;</span>
+<span class="linenos">4</span>    <span class="nt">&lt;version&gt;</span>1.13.9<span class="nt">&lt;/version&gt;</span>
+<span class="linenos">5</span>    <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+<span class="linenos">6</span><span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="java-api">
+<h4>Java API<a class="headerlink" href="#java-api" title="Permalink to this headline">¶</a></h4>
+<p>The Java classes need to be modified to accomodate the Docker daemon. The following sections will explain the changes that need to be made to the corresponding classes.</p>
+</div>
+</div>
+<div class="section" id="mydaemondaemonservice-java">
+<h3>MyDaemonDaemonService.java<a class="headerlink" href="#mydaemondaemonservice-java" title="Permalink to this headline">¶</a></h3>
+<p>Replace the existing MyDaemonDaemonService.java file with the following lines of code:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">package</span><span class="w"> </span><span class="nn">com.ur.urcap.examples.mydaemonswing.impl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kn">import</span><span class="w"> </span><span class="nn">com.ur.urcap.api.contribution.docker.DockerContribution</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="kn">import</span><span class="w"> </span><span class="nn">com.ur.urcap.api.contribution.docker.DockerRegistrationService</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="kn">import</span><span class="w"> </span><span class="nn">com.ur.urcap.api.contribution.docker.DockerRegistry</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyDaemonDaemonService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">DockerRegistrationService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DAEMON_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;daemon-py&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// or &quot;daemon-cpp&quot;</span><span class="w"></span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DockerContribution</span><span class="w"> </span><span class="n">dockerContribution</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyDaemonDaemonService</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">DockerContribution</span><span class="w"> </span><span class="nf">getDaemon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dockerContribution</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">registerDockerContributions</span><span class="p">(</span><span class="n">DockerRegistry</span><span class="w"> </span><span class="n">dockerRegistry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">        </span><span class="n">dockerContribution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dockerRegistry</span><span class="p">.</span><span class="na">registerDockerContribution</span><span class="p">(</span><span class="n">DAEMON_ID</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">26</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="activator-java">
+<h3>Activator.java<a class="headerlink" href="#activator-java" title="Permalink to this headline">¶</a></h3>
+<p>Change the DaemonService class type to DockerRegistrationService and import the connected package.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">package</span><span class="w"> </span><span class="nn">com.ur.urcap.examples.mydaemonswing.impl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kn">import</span><span class="w"> </span><span class="nn">com.ur.urcap.api.contribution.docker.DockerRegistrationService</span><span class="p">;</span><span class="w">                      </span><span class="c1">// Instead of import com.ur.urcap.api.contribution.DaemonService;</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Activator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">BundleActivator</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">BundleContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">MyDaemonDaemonService</span><span class="w"> </span><span class="n">daemonService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyDaemonDaemonService</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="w">        </span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">context</span><span class="p">.</span><span class="na">registerService</span><span class="p">(</span><span class="n">DockerRegistrationService</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">daemonService</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w">      </span><span class="c1">// Exchange the DaemonService - class with the DockerRegistrationService</span><span class="w"></span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">        </span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">19</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mydaemoninstallationnodecontribution-java">
+<h3>MyDaemonInstallationNodeContribution.java<a class="headerlink" href="#mydaemoninstallationnodecontribution-java" title="Permalink to this headline">¶</a></h3>
+<p>Import the following:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kn">import</span><span class="w"> </span><span class="nn">com.ur.urcap.api.contribution.docker.ContainerStatus</span><span class="p">;</span><span class="w">            </span><span class="c1">// Import this package</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="n">xmlRpcDaemonInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XmlRpcMyDaemonInterface</span><span class="p">();</span><span class="w">          </span><span class="c1">// In the constructor remove the arguments for creating a new instance of the XmlRpcMyDaemonInterface</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">    </span><span class="cm">/*</span>
+<span class="linenos">12</span><span class="cm">    *  Modify the URL path to the python Daemon in the container</span>
+<span class="linenos">13</span><span class="cm">    *  The URL is built using the venderID, urcapID, container name and service name set in the manifest.yaml file.</span>
+<span class="linenos">14</span><span class="cm">    *  The servicegateway name means that the container is running on this robot.</span>
+<span class="linenos">15</span><span class="cm">    */</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">generateScript</span><span class="p">(</span><span class="n">ScriptWriter</span><span class="w"> </span><span class="n">writer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="na">assign</span><span class="p">(</span><span class="n">XMLRPC_VARIABLE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rpc_factory(\&quot;xmlrpc\&quot;, \&quot;http://servicegateway/universal-robots/mydaemonswing/daemon-py/xmlrpc/RPC2\&quot;)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">        </span><span class="c1">// Apply the settings to the daemon on program start in the Installation pre-amble</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="na">appendLine</span><span class="p">(</span><span class="n">XMLRPC_VARIABLE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.set_title(\&quot;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getPopupTitle</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\&quot;)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateUI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">        </span><span class="n">ContainerStatus</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getDaemonState</span><span class="p">();</span><span class="w">                       </span><span class="c1">//  Replace the DaemonContribution with ContainerStatus</span><span class="w"></span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ContainerStatus</span><span class="p">.</span><span class="na">RUNNING</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                         </span><span class="c1">//  Do the same also in this IF - Statement</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">            </span><span class="n">view</span><span class="p">.</span><span class="na">setStartButtonEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">            </span><span class="n">view</span><span class="p">.</span><span class="na">setStopButtonEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">            </span><span class="n">view</span><span class="p">.</span><span class="na">setStartButtonEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">            </span><span class="n">view</span><span class="p">.</span><span class="na">setStopButtonEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">    </span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">awaitDaemonRunning</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">timeOutMilliSeconds</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">        </span><span class="n">daemonService</span><span class="p">.</span><span class="na">getDaemon</span><span class="p">().</span><span class="na">start</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">endTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">timeOutMilliSeconds</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000L</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="w">        </span><span class="c1">// Replace getState() with getContainerStatus() and DaemonContribution.State.RUNNING with ContainerStatus.RUNNING</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">endTime</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">daemonService</span><span class="p">.</span><span class="na">getDaemon</span><span class="p">().</span><span class="na">getContainerStatus</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ContainerStatus</span><span class="p">.</span><span class="na">RUNNING</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">xmlRpcDaemonInterface</span><span class="p">.</span><span class="na">isReachable</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">48</span>
+<span class="linenos">49</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">50</span>
+<span class="linenos">51</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isDefined</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="na">isSet</span><span class="p">(</span><span class="n">POPUPTITLE_KEY</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">getDaemonState</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ContainerStatus</span><span class="p">.</span><span class="na">RUNNING</span><span class="p">;</span><span class="w"> </span><span class="c1">// Change DaemonContribution.State.RUNNING to ContainerStatus.RUNNING</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">56</span>
+<span class="linenos">57</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ContainerStatus</span><span class="w"> </span><span class="nf">getDaemonState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">daemonService</span><span class="p">.</span><span class="na">getDaemon</span><span class="p">().</span><span class="na">getContainerStatus</span><span class="p">();</span><span class="w">          </span><span class="c1">// Change getState() with getContainerStatus()</span><span class="w"></span>
+<span class="linenos">59</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">60</span>
+<span class="linenos">61</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xmlrpcmydaemoninterface-java">
+<h3>XmlrpcMyDaemonInterface.java<a class="headerlink" href="#xmlrpcmydaemoninterface-java" title="Permalink to this headline">¶</a></h3>
+<p>The XmlRpcMyDaemonInterface method must altered, in order for the NGINX URL to be used in the contribution container.
+The arguments for the constructor also need to be removed.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">XmlRpcMyDaemonInterface</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">XmlRpcClientConfigImpl</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XmlRpcClientConfigImpl</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="n">config</span><span class="p">.</span><span class="na">setEnabledForExtensions</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">            </span><span class="n">config</span><span class="p">.</span><span class="na">setServerURL</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="p">(</span><span class="s">&quot;http://servicegateway/universal-robots/mydaemonswing/daemon-py/xmlrpc/RPC2&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// Here also the URL path for the python daemon needs to be modified</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">MalformedURLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">config</span><span class="p">.</span><span class="na">setConnectionTimeout</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">//1s</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XmlRpcClient</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">client</span><span class="p">.</span><span class="na">setConfig</span><span class="p">(</span><span class="n">config</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="build-and-deploy">
+<h2>Build and Deploy<a class="headerlink" href="#build-and-deploy" title="Permalink to this headline">¶</a></h2>
+<p>The project can now be built into a URCapX file by navigating to the location of the mydaemonswing within the develpment container.</p>
+<p>Run the following command in the  VSCode terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span> <span class="c1"># /workspaces/urcapx-dev</span>
+urcapctl build <span class="o">[</span>urcap_src_dir<span class="o">]</span> <span class="o">[</span>urcapx_dest_dir<span class="o">]</span>
+</pre></div>
+</div>
+<p>In this specific example, the command would be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl build mydaemonswing .
+</pre></div>
+</div>
+<p>Run the following command in the VSCode terminal to start running URSim:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span> <span class="c1"># /workspaces/urcapx-dev</span>
+./runURSim.sh
+</pre></div>
+</div>
+<p>The console should output something similar to the screenshot below:
+.. image:: ursim_output.png</p>
+<p>Run this command to deploy the URCapX file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl deploy <span class="o">[</span>dest_ip_address<span class="o">]</span> <span class="o">[</span>path_to_urcapx<span class="o">]</span>
+</pre></div>
+</div>
+<p>If you are deploying to a physical robot, the <em>dest_ip_address</em> will be the IP address of the robot.
+If you are deploying to URSim, the <em>dest_ip_address</em> will be the URSim docker IP address shown in your console output after starting URSim.</p>
+<p>In order to deploy to the URSim that is shown in the above screenshot, the command would be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl deploy <span class="m">172</span>.17.0.3 mydaemonswing.urcapx-dev
+</pre></div>
+</div>
+<p>You may need to restart URSim after deploying the URCap. You can do so by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#stop URSim Container</span>
+./stopURSim.sh
+<span class="c1">#start URSim Container</span>
+./runURSim.sh
+</pre></div>
+</div>
+<p>Congrats! You have successfully migrated the myDaemonSwing example so that it can build a .urcapx file!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to URCapX Migration Guide’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, phye.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

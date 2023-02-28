@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>User guide for URCapX development &mdash; URCapX Migration Guide 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="PolyScope 6 URCap Migration Guide" href="migrationGuide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> URCapX Migration Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="migrationGuide.html">PolyScope 6 URCap Migration Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User guide for URCapX development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">1. Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-urcap-development-docker-image-to-local-machine-registry">2. Add URCap development docker image to local machine registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vscode-open-project-in-remote-window">3. VSCode - open project in remote window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy-urcap-example">4. Copy urcap example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compile-urcap-sample">5. Compile urcap sample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-urcap">6. Deploy urcap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-ip-of-the-ursim">6.1. Get the IP of the URSim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy">6.2. Deploy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hard-reset-ursim">7. Hard reset URSIM</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">URCapX Migration Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>User guide for URCapX development</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/urcapctl-developer-guide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>urcapctl-developer-guide, version 0.2.1 dec 21. 2022 * 1.
+<a class="reference external" href="#Prerequisites">Prerequisites</a> * 2. <a class="reference external" href="#AddURCapdevelopmentdockerimagetolocalmachineregistry">Add URCap development docker
+image to local machine
+registry</a> *
+3. <a class="reference external" href="#VSCode-openprojectinremotewindow">VSCode - open project in remote
+window</a> * 4. <a class="reference external" href="#Copyurcapexample">Copy urcap
+example</a> * 5. <a class="reference external" href="#Compileurcapsample">Compile urcap
+sample</a> * 6. <a class="reference external" href="#Deployurcap">Deploy urcap</a> *
+6.1. <a class="reference external" href="#GettheIPoftheURSim">Get the IP of the URSim</a> * 6.2.
+<a class="reference external" href="#Deploy">Deploy</a> * 7. <a class="reference external" href="#HardresetURSIM">Hard reset URSIM</a></p>
+<!-- vscode-markdown-toc-config
+    numbering=true
+    autoSave=true
+    /vscode-markdown-toc-config --><!-- /vscode-markdown-toc --><div class="section" id="user-guide-for-urcapx-development">
+<h1>User guide for URCapX development<a class="headerlink" href="#user-guide-for-urcapx-development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prerequisites">
+<h2>1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">This development environment uses Visual Code Dev Containers extension
+to be able to use Visual Studio Code’s full feature set inside a
+container.</div>
+<div class="line">See <a class="reference external" href="https://code.visualstudio.com/docs/devcontainers/containers">Developing inside a
+Container</a>
+for more information about developing inside a docker container.</div>
+<div class="line">The following should be installed before continuing this guide:</div>
+</div>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.docker.com/">Docker</a></p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a></p></li>
+</ol>
+</div>
+<div class="section" id="add-urcap-development-docker-image-to-local-machine-registry">
+<h2>2. Add URCap development docker image to local machine registry<a class="headerlink" href="#add-urcap-development-docker-image-to-local-machine-registry" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Manually download the URCap development zip file
+(urcapx-dev.x.x.x.zip) on to local machine from pen drive / cloud
+drive.</p></li>
+<li><p>Unzip the urcapx-dev zip file.</p></li>
+<li><p>Load urcap-dev docker image into registry from inside the
+‘urcapx-dev’ folder</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> urcapx-dev
+docker load --input &lt;urcap-dev.x.x.x.tar&gt;
+<span class="c1"># example:  docker load --input urcap-dev.0.4.10.tar</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vscode-open-project-in-remote-window">
+<h2>3. VSCode - open project in remote window<a class="headerlink" href="#vscode-open-project-in-remote-window" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open the project in vscode by typing (inside the ‘urcapx-dev’
+folder):</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code .
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install docker plugin (If not already installed. you will have a
+popup on bottom right corner)</p></li>
+<li><p>Open project in remote window <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P)</span></code> –&gt; “Dev
+Containers: Open Folder in Container…”)</p></li>
+</ol>
+</div>
+<div class="section" id="copy-urcap-example">
+<h2>4. Copy urcap example<a class="headerlink" href="#copy-urcap-example" title="Permalink to this headline">¶</a></h2>
+<p>The sdk is placed in <code class="docutils literal notranslate"><span class="pre">/tmp/sdk</span></code></p>
+<ol class="arabic simple">
+<li><p>Open terminal in vscode <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">j)</span></code> or use the menu. Size it
+according to you needs. <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">j)</span></code> toggles between editor and
+terminal.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+cp -r /tmp/sdk/samples/swing/com.ur.urcap.examples.dockerdaemon dockerdaemon
+</pre></div>
+</div>
+<p>you will notice a dockedaemon folder in your workspace.</p>
+</div>
+<div class="section" id="compile-urcap-sample">
+<h2>5. Compile urcap sample<a class="headerlink" href="#compile-urcap-sample" title="Permalink to this headline">¶</a></h2>
+<p>Use cli tool <code class="docutils literal notranslate"><span class="pre">(urcapctl)</span></code> to build and deploy built urcapx</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+urcapctl build --help
+urcapctl build <span class="o">[</span>urcap_src_dir<span class="o">]</span> <span class="o">[</span>urcapx_dst_dir<span class="o">]</span>
+<span class="c1"># example: urcapctl build dockerdaemon .</span>
+</pre></div>
+</div>
+<p>After this command you should see dockerdaemon.urcapx file in your
+destination folder.</p>
+</div>
+<div class="section" id="deploy-urcap">
+<h2>6. Deploy urcap<a class="headerlink" href="#deploy-urcap" title="Permalink to this headline">¶</a></h2>
+<p>You can deploy either directly to a robot, given that you know the robot
+ip, or you can deploy it to URSim docker container where UR software
+stack is running.</p>
+<div class="section" id="get-the-ip-of-the-ursim">
+<h3>6.1. Get the IP of the URSim<a class="headerlink" href="#get-the-ip-of-the-ursim" title="Permalink to this headline">¶</a></h3>
+<p>If you would like to deploy to URSim, use the URSim IP shown when
+running URSim using bash script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./runURSim.sh
+</pre></div>
+</div>
+<p>or get the IP address from the URSim instance running in the Docker
+container</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker inspect -f <span class="s1">&#39;{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39;</span> &lt;ursim_container_name_or_id&gt;
+</pre></div>
+</div>
+<p>You can also directly deploy to a physical robot, given that you know
+the robot IP address.</p>
+</div>
+<div class="section" id="deploy">
+<h3>6.2. Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+urcapctl deploy --help
+urcapctl deploy <span class="o">[</span>dst_ip_address<span class="o">]</span> <span class="o">[</span>path_to_urcapx<span class="o">]</span>
+<span class="c1"># example: urcapctl deploy 172.17.0.2 dockerdaemon.urcapx</span>
+</pre></div>
+</div>
+<p>If the URCap is already installed they you will get an error response.
+saying it is already installed. In order to force replace existing URCap
+then use <code class="docutils literal notranslate"><span class="pre">--replace</span></code> flag</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl deploy <span class="o">[</span>dst_ip_address<span class="o">]</span> <span class="o">[</span>path_to_urcapx<span class="o">]</span> --replace
+<span class="c1"># example: urcapctl deploy 172.17.0.2 dockerdaemon.urcapx --replace</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hard-reset-ursim">
+<h2>7. Hard reset URSIM<a class="headerlink" href="#hard-reset-ursim" title="Permalink to this headline">¶</a></h2>
+<p>If you like to reset ursim, in this case remove all installed urcaps</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># stop ursim container</span>
+./stopURSim.sh
+<span class="c1"># remove staging folder. you might need sudo permissions</span>
+sudo rm -rf staging
+<span class="c1"># remove container volume</span>
+docker volume rm ursim-dind-var-lib-docker
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="migrationGuide.html" class="btn btn-neutral float-left" title="PolyScope 6 URCap Migration Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, phye.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
