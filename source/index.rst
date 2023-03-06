@@ -12,6 +12,8 @@ Welcome to Universal Robots's Documentation!
 
    migrationGuide.rst
    urcapctl-developer-guide.rst
+   ursim-simple-guide.rst
+   
 
 
 

@@ -11,6 +11,7 @@ Welcome to URCapX Migration Guide's documentation!
    :caption: Contents:
 
    migrationGuide.rst
+   ursim-simple-guide.rst
    urcapctl-developer-guide.rst
 
 
