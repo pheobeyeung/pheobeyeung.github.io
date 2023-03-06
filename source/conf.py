@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'URCapX Migration Guide'
-copyright = '2023, phye'
-author = 'phye'
+project = 'Universal Robots Documentation'
+copyright = '2023, Universal Robots A/S'
+author = 'Universal Robots A/S'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
@@ -40,7 +40,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
 
 
 # -- Options for HTML output -------------------------------------------------
