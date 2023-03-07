@@ -3,10 +3,6 @@ PolyScope 6 URCap Migration Guide
 
 This guide will demonstrate the steps needed to migrate a PolyScope 5 URCap project into a PolyScope 6 URCapX project.
 
-Prerequisites
--------------
-Set up the development environment by following steps one through four of the `User Guide for URCapX Development <https://universalrobots-my.sharepoint.com/personal/jbd_universal-robots_com/_layouts/15/onedrive.aspx?ct=1674616361175&or=Teams%2DHL&ga=1&id=%2Fpersonal%2Fjbd%5Funiversal%2Drobots%5Fcom%2FDocuments%2FUR%2B%20engineers%20prep%2Furcapx%2Ddev%2Furcapx%2Ddeveloper%2Dguide%2Ehtml&parent=%2Fpersonal%2Fjbd%5Funiversal%2Drobots%5Fcom%2FDocuments%2FUR%2B%20engineers%20prep%2Furcapx%2Ddev>`_.
-
 Copy MyDaemonSwing Example
 --------------------------
 1. Open the VSCode terminal. This can be toggled with ``ctrl + j`` on Windows and Linux, and ``cmd + j`` for MacOS.

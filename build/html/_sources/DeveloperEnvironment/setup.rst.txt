@@ -1,0 +1,13 @@
+Software Requirements and Set Up
+================================
+
+.. toctree:: 
+
+Git 
+---
+
+Docker
+------
+
+VSCode
+------
