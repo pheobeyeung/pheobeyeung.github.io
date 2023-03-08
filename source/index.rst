@@ -2,7 +2,7 @@
    sphinx-quickstart on Mon Mar  6 09:50:52 2023
 
 Universal Robots PolyScope 6 SDK Documentation
-==========================================================
+==============================================
 
 Welcome to PolyScope 6! This site contains the documentation for the updated tools in order to develop URCaps and interact with URSim. 
 
