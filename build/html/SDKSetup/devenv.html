@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDK Installation and Set Up &mdash; Universal Robots Documentation 0.1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compile and Deploy a URCap Example" href="firstbuild.html" />
+    <link rel="prev" title="SDK Set Up" href="../SDKSetup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../SDKSetup.html">SDK Set Up</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SDK Installation and Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstbuild.html">Compile and Deploy a URCap Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../DevelopmentGuides.html">URCap Development Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resources.html">Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Universal Robots Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../SDKSetup.html">SDK Set Up</a></li>
+      <li class="breadcrumb-item active">SDK Installation and Set Up</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/SDKSetup/devenv.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="sdk-installation-and-set-up">
+<h1>SDK Installation and Set Up<a class="headerlink" href="#sdk-installation-and-set-up" title="Permalink to this headline">¶</a></h1>
+<p>In order to use the development container, you will need to download <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio
+Code</a>.</p>
+<p><em>Note: If you are using a Windows machine, it is highly recommended that you run</em> <a class="reference external" href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3">Powershell</a> <em>as an administrator, in place of cmd.</em></p>
+<div class="section" id="vscode-setup">
+<h2>VSCode Setup<a class="headerlink" href="#vscode-setup" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open up Visual Studio Code.</p></li>
+<li><p>Install the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development extension
+pack</a> and
+<a class="reference external" href="https://code.visualstudio.com/docs/containers/overview">Docker extension</a>
+for Visual Studio Code.</p></li>
+</ol>
+</div>
+<div class="section" id="loading-the-docker-image">
+<h2>Loading the Docker Image<a class="headerlink" href="#loading-the-docker-image" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open Docker Desktop, or run your docker daemon.</p></li>
+<li><p>Download the URCap development zip file
+(urcapx-dev.x.x.x.zip).</p></li>
+<li><p>Unzip the urcapx-dev zip file.</p></li>
+<li><p>Open your terminal and navigate to the unzipped folder by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../path/to/urcapx-dev <span class="c1">#enter actual directory path</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Load the urcap-dev docker image into the registry from inside the urcapx-dev folder by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker load --input &lt;urcap-dev.x.x.x.tar&gt;
+<span class="c1"># example: docker load --input urcap-dev.1.0.4.tar</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="starting-dev-container">
+<h2>Starting Dev Container<a class="headerlink" href="#starting-dev-container" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open the project in VScode from your terminal by navigating into the urcapx-dev folder and running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code .
+</pre></div>
+</div>
+<p>2. Reopen the project in a Dev Container from VSCode. The option to reopen in a container should naturally pop up at the bottom right corner of your screen. If, for some reason, it doesn’t,
+open the command palette by typing <kbd class="kbd docutils literal notranslate">ctrl</kbd> +  <kbd class="kbd docutils literal notranslate">shift</kbd> + <kbd class="kbd docutils literal notranslate">p</kbd> and selecting <strong>Dev Containers: Open Folder in Container</strong>.</p>
+<p><em>Note: Type</em> <kbd class="kbd docutils literal notranslate">cmd</kbd> +  <kbd class="kbd docutils literal notranslate">shift</kbd> + <kbd class="kbd docutils literal notranslate">p</kbd> <em>to open the command palette on MacOS.</em></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../SDKSetup.html" class="btn btn-neutral float-left" title="SDK Set Up" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="firstbuild.html" class="btn btn-neutral float-right" title="Compile and Deploy a URCap Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Universal Robots A/S.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Software Requirements and Set Up" href="SDKSetup/setup.html" />
+    <link rel="next" title="SDK Installation and Set Up" href="SDKSetup/devenv.html" />
     <link rel="prev" title="Getting Started" href="GettingStarted.html" /> 
 </head>
 
@@ -45,9 +45,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SDK Set Up</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/setup.html">Software Requirements and Set Up</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html">SDK Installation and Set Up</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/ursimple.html">URSim Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDKSetup/devenv.html">SDK Installation and Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDKSetup/firstbuild.html">Compile and Deploy a URCap Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="DevelopmentGuides.html">URCap Development Guides</a></li>
@@ -80,42 +79,17 @@
              
   <div class="section" id="sdk-set-up">
 <h1>SDK Set Up<a class="headerlink" href="#sdk-set-up" title="Permalink to this headline">¶</a></h1>
-<p>The URCap SDK implements dev containers. The following section will explain the software needed, and the configuration that needs to be done before downloading the SDK artifacts.</p>
+<p>The URCap SDK is now deployed through a <a class="reference external" href="https://code.visualstudio.com/docs/devcontainers/containers">Visual Studio Dev Container</a>, so that you are able to get updated
+artifacts as they are released. This also reduces potential incompatability issues with different operating systems. This section will walk you through the VSCode configuration.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="SDKSetup/setup.html">Software Requirements and Set Up</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/setup.html#docker">Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/setup.html#vscode">VSCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDKSetup/devenv.html">SDK Installation and Set Up</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SDKSetup/devenv.html#vscode-setup">VSCode Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDKSetup/devenv.html#loading-the-docker-image">Loading the Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDKSetup/devenv.html#starting-dev-container">Starting Dev Container</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="SDKSetup/sdk.html">SDK Installation and Set Up</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#vscode-open-project-in-remote-window">3. VSCode - open project in remote window</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#create-a-new-urcapx">4. Create a new URCapX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#add-to-an-existing-urcapx">5. Add to an existing URCapX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#copy-urcap-sample">6. Copy URCap sample</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#copy-urcapx-sample-containing-a-container">7. Copy URCapX sample containing a container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#convert-urcap-to-urcapx-example">8. Convert URCap to URCapX example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#compile-urcap-sample">9. Compile urcap sample</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#deploy-urcap">10. Deploy urcap</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="SDKSetup/sdk.html#get-the-ip-of-the-ursim">10.1. Get the IP of the URSim</a></li>
-<li class="toctree-l3"><a class="reference internal" href="SDKSetup/sdk.html#deploy">10.2. Deploy</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/sdk.html#hard-reset-ursim">11. Hard reset URSim</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="SDKSetup/ursimple.html">URSim Quick Start Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/ursimple.html#load-ursim-image">1. Load URSim image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/ursimple.html#run-ursim-container">2. Run URSim container</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="SDKSetup/ursimple.html#run-container">2.1. Run Container</a></li>
-<li class="toctree-l3"><a class="reference internal" href="SDKSetup/ursimple.html#stop-container">2.2. Stop Container</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/ursimple.html#access-vnc">3. Access vnc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/ursimple.html#install-urcap">4. Install URCap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SDKSetup/ursimple.html#restart-polyscope">5. Restart PolyScope</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="SDKSetup/firstbuild.html">Compile and Deploy a URCap Example</a></li>
 </ul>
 </div>
 </div>
@@ -125,7 +99,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="GettingStarted.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="SDKSetup/setup.html" class="btn btn-neutral float-right" title="Software Requirements and Set Up" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SDKSetup/devenv.html" class="btn btn-neutral float-right" title="SDK Installation and Set Up" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -46,4 +46,3 @@ open the command palette by typing :kbd:`ctrl` +  :kbd:`shift` + :kbd:`p` and se
 
 *Note: Type* :kbd:`cmd` +  :kbd:`shift` + :kbd:`p` *to open the command palette on MacOS.*
 
-3. Open up the terminal in VSCode by using :kbd:`shift` + :kbd:`j` , or :kbd:`cmd` + :kbd:`j`

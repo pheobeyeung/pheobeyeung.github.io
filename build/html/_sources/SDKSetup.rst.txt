@@ -1,13 +1,15 @@
 SDK Set Up
 ==========
 
-The URCap SDK implements dev containers. The following section will explain the software needed, and the configuration that needs to be done before downloading the SDK artifacts.
+The URCap SDK is now deployed through a `Visual Studio Dev Container <https://code.visualstudio.com/docs/devcontainers/containers>`__, so that you are able to get updated 
+artifacts as they are released. This also reduces potential incompatability issues with different operating systems. This section will walk you through the VSCode configuration.
 
 .. toctree::
     :maxdepth: 3
     :glob:
 
-    SDKSetup/setup
-    SDKSetup/sdk
-    SDKSetup/ursimple 
+
+    SDKSetup/devenv
+    SDKSetup/firstbuild
+
     

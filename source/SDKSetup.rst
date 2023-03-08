@@ -9,6 +9,7 @@ artifacts as they are released. This also reduces potential incompatability issu
     :glob:
 
 
-    SDKSetup/sdk
+    SDKSetup/devenv
+    SDKSetup/firstbuild
 
     
