@@ -43,10 +43,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../DeveloperEnvironment.html">Development Environment</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Software Requirements and Set Up</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Software Requirements and Set Up</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk.html">SDK Installation and Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ursimple.html">URSim Quick Start Guide</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../URCaps.html">URCaps</a></li>
@@ -81,16 +80,44 @@
              
   <div class="section" id="software-requirements-and-set-up">
 <h1>Software Requirements and Set Up<a class="headerlink" href="#software-requirements-and-set-up" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<div class="section" id="git">
-<h2>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
-</div>
+<p><em>Prerequisites:</em> <em>You must
+have</em><a class="reference external" href="https://git-scm.com/downloads">Git</a><em>,</em><a class="reference external" href="https://code.visualstudio.com/download">Visual Studio
+Code</a><em>,
+and</em><a class="reference external" href="https://www.docker.com/products/docker-desktop/">Docker</a><em>installed
+and configured.</em></p>
 <div class="section" id="docker">
 <h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="vscode">
 <h2>VSCode<a class="headerlink" href="#vscode" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Windows, you need to perform these steps before
+proceeding: 1. Open Git Bash from the Start menu as adminstrator. 2. Run
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--system</span> <span class="pre">core.longpaths</span> <span class="pre">true</span></code> in the terminal. 3. Ensure
+that your wsl engine is installed correctly and up to date.</p>
+<ol class="arabic simple">
+<li><p>Open Docker Desktop to ensure that the program is running.</p></li>
+<li><p>Install the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development extension
+pack</a>
+for Visual Studio Code.</p></li>
+<li><p>Open Visual Studio Code.</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+G</span></code> to open source control. It should also be the
+third icon from the top on the left side of the screen.</p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">https://github.com/pheobeyeung/universal_robots_sdk</span></code> as the
+remote repository to clone, and pick a desired location to save onto
+your drive.</p></li>
+<li><p>Open the cloned repository in VSCode, and reopen in Dev container
+when prompted. This may take several minutes to load. <em>6a. If the
+prompt does not automatically pop up, you can reopen the folder in a
+dev container by accessing the command palette through:</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span></code> <em>on Windows/Linux</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Command+Shift+P</span></code> <em>on Mac</em> <em>and search for</em> <strong>Dev Containers:
+Reopen in Container</strong></p></li>
+</ul>
+</li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">Ctrl+`+Shift</span></code> to open the Terminal. Congrats! The SDK
+environment is now successfully setup!</p></li>
+</ol>
 </div>
 </div>
 

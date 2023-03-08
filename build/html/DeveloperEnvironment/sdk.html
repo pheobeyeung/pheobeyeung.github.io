@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="VSCode" href="vscode.html" />
-    <link rel="prev" title="Docker" href="docker.html" /> 
+    <link rel="next" title="URSim Quick Start Guide" href="ursimple.html" />
+    <link rel="prev" title="Software Requirements and Set Up" href="setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,11 +43,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../DeveloperEnvironment.html">Development Environment</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Software Requirements and Set Up</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SDK Installation and Set Up</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vscode.html">VSCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ursimple.html">URSim Quick Start Guide</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../URCaps.html">URCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../URSim.html">URSim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resources.html">Resources</a></li>
 </ul>
 
         </div>
@@ -77,15 +80,209 @@
              
   <div class="section" id="sdk-installation-and-set-up">
 <h1>SDK Installation and Set Up<a class="headerlink" href="#sdk-installation-and-set-up" title="Permalink to this headline">¶</a></h1>
-<p>hi</p>
+<ol class="arabic simple">
+<li><p>Manually download the URCap development zip file
+(urcapx-dev.x.x.x.zip) on to local machine from pen drive / cloud
+drive.</p></li>
+<li><p>Unzip the urcapx-dev zip file.</p></li>
+<li><p>Load urcap-dev docker image into registry from inside the
+<code class="docutils literal notranslate"><span class="pre">urcapx-dev</span></code> folder</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> urcapx-dev
+docker load --input &lt;urcap-dev.x.x.x.tar&gt;
+<span class="c1"># example:  docker load --input urcap-dev.1.0.4.tar</span>
+</pre></div>
+</div>
+<div class="section" id="vscode-open-project-in-remote-window">
+<h2>3. VSCode - open project in remote window<a class="headerlink" href="#vscode-open-project-in-remote-window" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open the project in vscode by typing (inside the ‘urcapx-dev’
+folder):</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code .
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install docker plugin (If not already installed. you will have a
+popup on bottom right corner)</p></li>
+<li><p>Open project in remote window <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P)</span></code> –&gt; “Dev
+Containers: Open Folder in Container…”)</p></li>
+</ol>
+</div>
+<div class="section" id="create-a-new-urcapx">
+<h2>4. Create a new URCapX<a class="headerlink" href="#create-a-new-urcapx" title="Permalink to this headline">¶</a></h2>
+<p>In the workspace folder type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl create
+</pre></div>
+</div>
+<p>You will be prompted for Vendor Name, Vendor Id, URCap Name, URCap Id
+and what to create. The new URCapX source will be created in a folder
+with the same name as the URCap Id.</p>
+<p>It is also possible to create a new URCapX without being prompted, but
+this requires all the information to be entered as arguments.</p>
+<p>To see all available arguments type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl create --help
+<span class="c1"># example: urcapctl create --vendorId=myvendor --urcapId=myurcap --osgi=myosgibundle --urcapApiVersion=1.13.0 --programNode=MyPrgNode</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">The example will create the source code for a new URCapX with id
+<code class="docutils literal notranslate"><span class="pre">myurcap</span></code>.</div>
+<div class="line">It will include an OSGi bundle called <code class="docutils literal notranslate"><span class="pre">myosgibundle</span></code> and a program
+node called <code class="docutils literal notranslate"><span class="pre">MyPrgNode</span></code>.</div>
+</div>
+</div>
+<div class="section" id="add-to-an-existing-urcapx">
+<h2>5. Add to an existing URCapX<a class="headerlink" href="#add-to-an-existing-urcapx" title="Permalink to this headline">¶</a></h2>
+<p>In the workspace folder type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl add
+</pre></div>
+</div>
+<p>You will be prompted for existing URCap Id and what to add. Note that
+the URCapX source must be located in the workspace in a folder with same
+name as its URCap Id.</p>
+<p>It is also possible to add to an existing URCapX source without being
+prompted, but this requires all the information to be entered as
+arguments.</p>
+<p>To see all available arguments type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl add --help
+<span class="c1"># example: urcapctl add --urcapId=myurcap --installationNode=MyInstNode</span>
+</pre></div>
+</div>
+<p>The example will add an installation node called <code class="docutils literal notranslate"><span class="pre">MyInstNode</span></code> to the
+existing URCapX source with id <code class="docutils literal notranslate"><span class="pre">myurcap</span></code>.</p>
+<p>Note that it is also possible to run <code class="docutils literal notranslate"><span class="pre">urcapctl</span> <span class="pre">add</span></code> from inside an
+existing URCapX source folder where the <code class="docutils literal notranslate"><span class="pre">manifest.yaml</span></code> is located,
+then the URCap Id is not needed as an argument.</p>
+</div>
+<div class="section" id="copy-urcap-sample">
+<h2>6. Copy URCap sample<a class="headerlink" href="#copy-urcap-sample" title="Permalink to this headline">¶</a></h2>
+<p>The sdk is placed in <code class="docutils literal notranslate"><span class="pre">/tmp/sdk</span></code></p>
+<ol class="arabic simple">
+<li><p>Open terminal in vscode <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">j)</span></code> or use the menu. Size it
+according to you needs. <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">j)</span></code> toggles between editor and
+terminal.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+cp -r /tmp/sdk/samples/swing/com.ur.urcap.examples.helloworldswing helloworldswing-osgi
+</pre></div>
+</div>
+<p>you will notice a <code class="docutils literal notranslate"><span class="pre">helloworldswing-osgi</span></code> folder in your workspace.</p>
+</div>
+<div class="section" id="copy-urcapx-sample-containing-a-container">
+<h2>7. Copy URCapX sample containing a container<a class="headerlink" href="#copy-urcapx-sample-containing-a-container" title="Permalink to this headline">¶</a></h2>
+<p>The sdk is placed in <code class="docutils literal notranslate"><span class="pre">/tmp/sdk</span></code></p>
+<ol class="arabic simple">
+<li><p>Open terminal in vscode <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">j)</span></code> or use the menu. Size it
+according to you needs. <code class="docutils literal notranslate"><span class="pre">(Ctrl</span> <span class="pre">+</span> <span class="pre">j)</span></code> toggles between editor and
+terminal.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+cp -r /tmp/sdk/samples/swing/com.ur.urcap.examples.dockerdaemon dockerdaemon
+</pre></div>
+</div>
+<p>you will notice a <code class="docutils literal notranslate"><span class="pre">dockerdaemon</span></code> folder in your workspace.</p>
+</div>
+<div class="section" id="convert-urcap-to-urcapx-example">
+<h2>8. Convert URCap to URCapX example<a class="headerlink" href="#convert-urcap-to-urcapx-example" title="Permalink to this headline">¶</a></h2>
+<p>URCaps in the old format can be converted into the new URCapX format
+using the <code class="docutils literal notranslate"><span class="pre">convert</span></code> command, if the source code is available. Note
+that if the URCap contains daemons then the daemons will have to be
+added manually after the conversion.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+urcapctl convert --help
+urcapctl convert <span class="o">[</span>path_to_urcap_source<span class="o">]</span> <span class="o">[</span>path_to_new_urcapx_source<span class="o">]</span>
+<span class="c1"># example: urcapctl convert helloworldswing-osgi helloworldswing</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">--replace</span></code> option can be added if the conversion needs
+to be rerun. This will remove the <code class="docutils literal notranslate"><span class="pre">[path_to_new_urcapx_source]</span></code> folder
+before creating it.</p>
+<div class="line-block">
+<div class="line">The convert command will create the <code class="docutils literal notranslate"><span class="pre">[path_to_new_urcapx_source]</span></code>
+folder with the <code class="docutils literal notranslate"><span class="pre">[path_to_urcap_source]</span></code> as a sub-folder, then the
+<code class="docutils literal notranslate"><span class="pre">[path_to_urcap_source]/src</span></code> folder will be copied over into the
+<code class="docutils literal notranslate"><span class="pre">[path_to_new_urcapx_source]/[path_to_urcap_source]/src</span></code> folder.</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">pom.xml</span></code> will be copied over, but with the <code class="docutils literal notranslate"><span class="pre">assembly</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">profiles</span></code> sections removed. Note that if the java version is 6 then
+it will be upgraded to version 8.</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">manifest.yaml</span></code> file will be created from the information in the
+<code class="docutils literal notranslate"><span class="pre">pom.xml</span></code>, so it may need to be edited.</div>
+<div class="line">An empty <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> file will also be created in the
+<code class="docutils literal notranslate"><span class="pre">[path_to_new_urcapx_source]</span></code> folder.</div>
+</div>
+</div>
+<div class="section" id="compile-urcap-sample">
+<h2>9. Compile urcap sample<a class="headerlink" href="#compile-urcap-sample" title="Permalink to this headline">¶</a></h2>
+<p>Use cli tool <code class="docutils literal notranslate"><span class="pre">(urcapctl)</span></code> to build and deploy built urcapx</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+urcapctl build --help
+urcapctl build <span class="o">[</span>urcapx_src_dir<span class="o">]</span> <span class="o">[</span>urcapx_dst_dir<span class="o">]</span>
+<span class="c1"># example: urcapctl build dockerdaemon .</span>
+<span class="c1"># or</span>
+<span class="c1"># example: urcapctl build helloworldswing .</span>
+</pre></div>
+</div>
+<p>After this command you should see dockerdaemon.urcapx file in your
+destination folder.</p>
+</div>
+<div class="section" id="deploy-urcap">
+<h2>10. Deploy urcap<a class="headerlink" href="#deploy-urcap" title="Permalink to this headline">¶</a></h2>
+<p>You can deploy either directly to a robot, given that you know the robot
+ip, or you can deploy it to URSim docker container where UR software
+stack is running.</p>
+<div class="section" id="get-the-ip-of-the-ursim">
+<h3>10.1. Get the IP of the URSim<a class="headerlink" href="#get-the-ip-of-the-ursim" title="Permalink to this headline">¶</a></h3>
+<p>If you would like to deploy to URSim, use the URSim IP shown when
+running URSim using bash script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./runURSim.sh
+</pre></div>
+</div>
+<p>or get the IP address from the URSim instance running in the Docker
+container</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker inspect -f <span class="s1">&#39;{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39;</span> &lt;ursim_container_name_or_id&gt;
+</pre></div>
+</div>
+<p>You can also directly deploy to a physical robot, given that you know
+the robot IP address.</p>
+</div>
+<div class="section" id="deploy">
+<h3>10.2. Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># /workspaces/urcapx-dev</span>
+urcapctl deploy --help
+urcapctl deploy <span class="o">[</span>dst_ip_address<span class="o">]</span> <span class="o">[</span>path_to_urcapx<span class="o">]</span>
+<span class="c1"># example: urcapctl deploy 172.17.0.3 dockerdaemon-v1.0.urcapx</span>
+</pre></div>
+</div>
+<p>If the URCap is already installed they you will get an error response.
+saying it is already installed. In order to force replace existing URCap
+then use <code class="docutils literal notranslate"><span class="pre">--replace</span></code> flag</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl deploy <span class="o">[</span>dst_ip_address<span class="o">]</span> <span class="o">[</span>path_to_urcapx<span class="o">]</span> --replace
+<span class="c1"># example: urcapctl deploy 172.17.0.3 dockerdaemon-v1.0.urcapx --replace</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hard-reset-ursim">
+<h2>11. Hard reset URSim<a class="headerlink" href="#hard-reset-ursim" title="Permalink to this headline">¶</a></h2>
+<p>If you like to reset ursim, in this case remove all installed urcaps</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># stop ursim container</span>
+./stopURSim.sh
+<span class="c1"># remove staging folder. you might need sudo permissions</span>
+sudo rm -rf staging
+<span class="c1"># remove container volume</span>
+docker volume rm ursim-dind-var-lib-docker
+</pre></div>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="docker.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="vscode.html" class="btn btn-neutral float-right" title="VSCode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup.html" class="btn btn-neutral float-left" title="Software Requirements and Set Up" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ursimple.html" class="btn btn-neutral float-right" title="URSim Quick Start Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

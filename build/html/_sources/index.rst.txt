@@ -8,7 +8,7 @@ Welcome to PolyScope 6! This site contains the documentation for the updated too
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :titlesonly:
    :glob:
 
