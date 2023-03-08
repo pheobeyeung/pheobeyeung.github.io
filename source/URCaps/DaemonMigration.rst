@@ -1,4 +1,4 @@
-PolyScope 6 URCap Migration Guide
+URCap Migration Guide with Daemon
 =================================
 
 This guide will demonstrate the steps needed to migrate a PolyScope 5 URCap project into a PolyScope 6 URCapX project.
