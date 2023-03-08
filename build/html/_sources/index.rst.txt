@@ -12,9 +12,9 @@ Welcome to PolyScope 6! This site contains the documentation for the updated too
    :titlesonly:
    :glob:
 
-   DeveloperEnvironment
-   URCaps
-   URSim
+   GettingStarted
+   SDKSetup
+   DevelopmentGuides
    Resources
 
 

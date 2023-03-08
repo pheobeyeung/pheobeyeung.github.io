@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URSim Quick Start Guide &mdash; Universal Robots Documentation 0.1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SDKSetup.html">SDK Set Up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DevelopmentGuides.html">URCap Development Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resources.html">Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Universal Robots Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">URSim Quick Start Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/SDKSetup/ursimple.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ursim-quick-start-guide">
+<h1>URSim Quick Start Guide<a class="headerlink" href="#ursim-quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<p>This page will explain how URSim can be spun up.</p>
+<div class="section" id="load-ursim-image">
+<h2>1. Load URSim image<a class="headerlink" href="#load-ursim-image" title="Permalink to this headline">¶</a></h2>
+<p>Download the URSim image arnold-ursim-arnold-container-amd64-prod-.tar
+(749 MB) and place it in the urcapx-dev workspace.</p>
+</div>
+<div class="section" id="run-ursim-container">
+<h2>2. Run URSim container<a class="headerlink" href="#run-ursim-container" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="run-container">
+<h3>2.1. Run Container<a class="headerlink" href="#run-container" title="Permalink to this headline">¶</a></h3>
+<p>Let’s run the URSim container inside the urcapx-dev container workspace:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./runURSim.sh
+</pre></div>
+</div>
+<p>To see possible arguements type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./runURSim.sh --help
+</pre></div>
+</div>
+<p>A staging folder will be created to hold the created programs,
+installations and data from the installedURCaps.</p>
+</div>
+<div class="section" id="stop-container">
+<h3>2.2. Stop Container<a class="headerlink" href="#stop-container" title="Permalink to this headline">¶</a></h3>
+<p>To later stop the URSim container from inside the urcapx-dev, execute
+following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./stopURSim.sh
+</pre></div>
+</div>
+<p>This will stop URSim and remove its container.</p>
+</div>
+</div>
+<div class="section" id="access-vnc">
+<h2>3. Access vnc<a class="headerlink" href="#access-vnc" title="Permalink to this headline">¶</a></h2>
+<p>Click on the link <a class="reference external" href="http://localhost:6080/vnc.html">vnc</a> or open the
+link manually in browser</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://localhost:6080/vnc.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-urcap">
+<h2>4. Install URCap<a class="headerlink" href="#install-urcap" title="Permalink to this headline">¶</a></h2>
+<p>Build and install .urcapx files following the guidelines in urcapx-dev
+environment. See
+<a class="reference external" href="urcapx-dev/docs/urcapctl-developer-guide.md">urcapctl-developer-guide</a>.</p>
+</div>
+<div class="section" id="restart-polyscope">
+<h2>5. Restart PolyScope<a class="headerlink" href="#restart-polyscope" title="Permalink to this headline">¶</a></h2>
+<p>In the PolyScope application select restart to be able to use the newly
+installed URCap.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Universal Robots A/S.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
