@@ -1,5 +1,5 @@
-Development Environment
-=======================
+SDK Set Up
+==========
 
 The URCap SDK implements dev containers. The following section will explain the software needed, and the configuration that needs to be done before downloading the SDK artifacts.
 
@@ -7,7 +7,7 @@ The URCap SDK implements dev containers. The following section will explain the 
     :maxdepth: 3
     :glob:
 
-    DeveloperEnvironment/setup
-    DeveloperEnvironment/sdk
-    DeveloperEnvironment/ursimple 
+    StartingDevelopment/setup
+    StartingDevelopment/sdk
+    StartingDevelopment/ursimple 
     
