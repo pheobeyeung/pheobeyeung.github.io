@@ -8,7 +8,7 @@ artifacts as they are released. This also reduces potential incompatability issu
     :maxdepth: 3
     :glob:
 
-    SDKSetup/setup
+
     SDKSetup/sdk
-    SDKSetup/ursimple 
+
     

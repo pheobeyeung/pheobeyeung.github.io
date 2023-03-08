@@ -1,0 +1,45 @@
+SDK Installation and Set Up
+===========================
+In order to use the development container, you will need to download `Visual Studio
+Code <https://code.visualstudio.com/download>`__. 
+
+*Note: If you are using a Windows machine, it is highly recommended that you run `Powershell <https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3>`__ as an administrator, in place of cmd.*
+
+VSCode Setup 
+------------
+1. Open up Visual Studio Code. 
+2. Install the `Remote Development extension
+   pack <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack>`__ and 
+   `Docker extension <https://code.visualstudio.com/docs/containers/overview>`__
+   for Visual Studio Code.
+
+Loading the Docker Image 
+------------------------
+1. Open Docker Desktop, or run your docker daemon. 
+2. Download the URCap development zip file
+   (urcapx-dev.x.x.x.zip).
+3. Unzip the urcapx-dev zip file.
+4. Open your terminal and navigate to the unzipped folder by running 
+
+.. code:: bash
+   cd ../path/to/urcapx-dev #enter actual directory path 
+
+5. Load the urcap-dev docker image into the registry from inside the urcapx-dev folder by running
+
+.. code:: bash
+   docker load --input <urcap-dev.x.x.x.tar>
+   # example: docker load --input urcap-dev.1.0.4.tar
+
+Starting Dev Container
+----------------------
+
+1. Open the project in VScode from your terminal by navigating into the urcapx-dev folder and running
+
+.. code:: bash
+
+   code .
+
+2. Reopen the project in a Dev Container from VSCode. The option to reopen in a container should naturally pop up at the bottom right corner of your screen. If, for some reason, it doesn't, 
+open the command palette by typing :kbd:`ctrl` +  :kbd:`shift` + :kbd:`p` 
+(:kbd:`cmd` +  :kbd:`shift` + :kbd:`p` for MacOS) and selecting `Dev Containers: Open Folder in Container`. 
+
