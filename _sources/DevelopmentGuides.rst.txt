@@ -4,4 +4,5 @@ URCap Development Guides
 .. toctree::
     :maxdepth: 2
 
-    DevelopmentGuides/DaemonMigration
+    DevelopmentGuides/MigrationGuideWithDaemon
+    DevelopmentGuides/MigrationGuideWithoutDaemon

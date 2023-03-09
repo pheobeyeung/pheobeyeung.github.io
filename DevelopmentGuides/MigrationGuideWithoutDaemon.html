@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>URCap Migration Guide with Daemon &mdash; Universal Robots Documentation 0.1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>URCap Migration Guide without Daemon &mdash; Universal Robots Documentation 0.1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Resources" href="../Resources.html" />
-    <link rel="prev" title="URCap Development Guides" href="../DevelopmentGuides.html" /> 
+    <link rel="prev" title="URCap Migration Guide with Daemon" href="MigrationGuideWithDaemon.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +46,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SDKSetup.html">SDK Set Up</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../DevelopmentGuides.html">URCap Development Guides</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">URCap Migration Guide with Daemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MigrationGuideWithDaemon.html">URCap Migration Guide with Daemon</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">URCap Migration Guide without Daemon</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Resources.html">Resources</a></li>
@@ -67,9 +68,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../DevelopmentGuides.html">URCap Development Guides</a></li>
-      <li class="breadcrumb-item active">URCap Migration Guide with Daemon</li>
+      <li class="breadcrumb-item active">URCap Migration Guide without Daemon</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/DevelopmentGuides/DaemonMigration.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/DevelopmentGuides/MigrationGuideWithoutDaemon.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,9 +78,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="urcap-migration-guide-with-daemon">
-<h1>URCap Migration Guide with Daemon<a class="headerlink" href="#urcap-migration-guide-with-daemon" title="Permalink to this headline">¶</a></h1>
-<p>This guide will demonstrate the steps needed to migrate a PolyScope 5 URCap project into a PolyScope 6 URCapX project.</p>
+  <div class="section" id="urcap-migration-guide-without-daemon">
+<h1>URCap Migration Guide without Daemon<a class="headerlink" href="#urcap-migration-guide-without-daemon" title="Permalink to this headline">¶</a></h1>
+<p>This migration guide is aimed to transition a URCap without a daemon process created for Polyscope 5 to fit the structure for Polyscope 6.</p>
+<div class="section" id="create-project-inside-the-devcontainer">
+<h2>Create project inside the DevContainer<a class="headerlink" href="#create-project-inside-the-devcontainer" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Copy your existing Polyscope 5 project folder into the Polyscope 6 SDK workspace (urcapx-dev folder).</p></li>
+<li><p>Inside the project create a directory with the following naming convention: &lt;<strong>artifactId</strong>&gt;-osgi -&gt; (helloworld-osgi).</p></li>
+<li><p>Move the “src” folder inside the new directory created at 3. .</p></li>
+<li><p>Move the pom.xml file into the new directory created at 3. .</p></li>
+<li><p>If existing, delete the assembly.xml - file.</p></li>
+<li><p>Create the following files in the root directory of the project:
+a. <strong>LICENSE</strong>: Insert your own license in this file as plain text.
+b. <strong>manifest.yaml</strong>: Create a empty yaml file and follow the next section.</p></li>
+</ol>
+</div>
+<div class="section" id="create-manifest-yaml-file">
+<h2>Create manifest.yaml file<a class="headerlink" href="#create-manifest-yaml-file" title="Permalink to this headline">¶</a></h2>
+<p>The manifest.yaml file is linked to the pom.xml file for certain parts. You can use the below sample and change the parts as needed.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">urcaps/v1.0</span>
+<span class="nt">metadata</span><span class="p">:</span>
+    <span class="nt">vendorID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">com-ur-urcap-examples</span>
+    <span class="nt">urcapID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helloworldswing</span>
+    <span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.0&quot;</span>
+    <span class="nt">urcapName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello World Swing</span>
+    <span class="nt">vendorName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Universal Robots</span>
+    <span class="nt">contactInfo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Energivej 25, 5260 Odense S, Denmark</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello World Swing sample URCap</span>
+    <span class="nt">copyright</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Copyright (C) 2009-2023 Universal Robots. All Rights Reserved</span>
+    <span class="nt">licenseType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample license</span>
+<span class="nt">artifacts</span><span class="p">:</span>
+    <span class="nt">osgiBundles</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helloworldswing-osgi</span>
+      <span class="nt">bundle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helloworldswing-1.0-SNAPSHOT.jar</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="copy-mydaemonswing-example">
 <h2>Copy MyDaemonSwing Example<a class="headerlink" href="#copy-mydaemonswing-example" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
@@ -886,7 +921,7 @@ If you are deploying to URSim, the <em>dest_ip_address</em> will be the URSim do
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../DevelopmentGuides.html" class="btn btn-neutral float-left" title="URCap Development Guides" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MigrationGuideWithDaemon.html" class="btn btn-neutral float-left" title="URCap Migration Guide with Daemon" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../Resources.html" class="btn btn-neutral float-right" title="Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

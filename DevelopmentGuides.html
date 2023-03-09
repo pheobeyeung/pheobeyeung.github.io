@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="URCap Migration Guide with Daemon" href="DevelopmentGuides/DaemonMigration.html" />
+    <link rel="next" title="URCap Migration Guide with Daemon" href="DevelopmentGuides/MigrationGuideWithDaemon.html" />
     <link rel="prev" title="Compile and Deploy URCap Example" href="SDKSetup/firstbuild.html" /> 
 </head>
 
@@ -46,7 +46,8 @@
 <li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDKSetup.html">SDK Set Up</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">URCap Development Guides</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html">URCap Migration Guide with Daemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html">URCap Migration Guide with Daemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html">URCap Migration Guide without Daemon</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Resources.html">Resources</a></li>
@@ -80,13 +81,24 @@
 <h1>URCap Development Guides<a class="headerlink" href="#urcap-development-guides" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html">URCap Migration Guide with Daemon</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html#copy-mydaemonswing-example">Copy MyDaemonSwing Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html#updated-structure">Updated Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html#manifest-file">Manifest file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html#add-license-file">Add License File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html#adjust-artifacts">Adjust Artifacts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/DaemonMigration.html#build-and-deploy">Build and Deploy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html">URCap Migration Guide with Daemon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html#copy-mydaemonswing-example">Copy MyDaemonSwing Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html#updated-structure">Updated Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html#manifest-file">Manifest file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html#add-license-file">Add License File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html#adjust-artifacts">Adjust Artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithDaemon.html#build-and-deploy">Build and Deploy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html">URCap Migration Guide without Daemon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#create-project-inside-the-devcontainer">Create project inside the DevContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#create-manifest-yaml-file">Create manifest.yaml file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#copy-mydaemonswing-example">Copy MyDaemonSwing Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#updated-structure">Updated Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#manifest-file">Manifest file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#add-license-file">Add License File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#adjust-artifacts">Adjust Artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DevelopmentGuides/MigrationGuideWithoutDaemon.html#build-and-deploy">Build and Deploy</a></li>
 </ul>
 </li>
 </ul>
@@ -98,7 +110,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="SDKSetup/firstbuild.html" class="btn btn-neutral float-left" title="Compile and Deploy URCap Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="DevelopmentGuides/DaemonMigration.html" class="btn btn-neutral float-right" title="URCap Migration Guide with Daemon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="DevelopmentGuides/MigrationGuideWithDaemon.html" class="btn btn-neutral float-right" title="URCap Migration Guide with Daemon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

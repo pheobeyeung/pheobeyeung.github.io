@@ -6,10 +6,9 @@ Universal Robots PolyScope 6 SDK Documentation
 
 Welcome to PolyScope 6! This site contains the documentation for the updated tools in order to develop URCaps and interact with URSim. 
 
-Contents:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :titlesonly:
    :glob:
 

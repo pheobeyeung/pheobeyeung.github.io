@@ -1,7 +1,43 @@
-URCap Migration Guide with Daemon
-=================================
+URCap Migration Guide without Daemon
+==========================================
 
-This guide will demonstrate the steps needed to migrate a PolyScope 5 URCap project into a PolyScope 6 URCapX project.
+This migration guide is aimed to transition a URCap without a daemon process created for Polyscope 5 to fit the structure for Polyscope 6.
+
+Create project inside the DevContainer
+----------------------------------------
+1. Copy your existing Polyscope 5 project folder into the Polyscope 6 SDK workspace (urcapx-dev folder).
+2. Inside the project create a directory with the following naming convention: <**artifactId**>-osgi -> (helloworld-osgi).
+3. Move the "src" folder inside the new directory created at 3. .
+4. Move the pom.xml file into the new directory created at 3. .
+5. If existing, delete the assembly.xml - file.
+6. Create the following files in the root directory of the project:
+   a. **LICENSE**: Insert your own license in this file as plain text.
+   b. **manifest.yaml**: Create a empty yaml file and follow the next section.
+
+Create manifest.yaml file
+--------------------------
+The manifest.yaml file is linked to the pom.xml file for certain parts. You can use the below sample and change the parts as needed.
+
+.. 
+
+.. code-block:: yaml
+
+    apiVersion: urcaps/v1.0
+    metadata:
+        vendorID: com-ur-urcap-examples
+        urcapID: helloworldswing        
+        version: "1.0"
+        urcapName: Hello World Swing
+        vendorName: Universal Robots
+        contactInfo: Energivej 25, 5260 Odense S, Denmark
+        description: Hello World Swing sample URCap
+        copyright: Copyright (C) 2009-2023 Universal Robots. All Rights Reserved
+        licenseType: Sample license
+    artifacts:
+        osgiBundles:
+        - name: helloworldswing-osgi 
+          bundle: helloworldswing-1.0-SNAPSHOT.jar
+
 
 Copy MyDaemonSwing Example
 --------------------------
