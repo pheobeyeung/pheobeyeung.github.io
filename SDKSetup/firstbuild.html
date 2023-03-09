@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="URCap Development Guides" href="../DevelopmentGuides.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../DevelopmentGuides.html" />
     <link rel="prev" title="SDK Installation and Set Up" href="devenv.html" /> 
 </head>
 
@@ -49,7 +49,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Compile and Deploy URCap Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../DevelopmentGuides.html">URCap Development Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DevelopmentGuides/MigrationGuideWithoutDaemon.html">URCap Migration Guide without Daemon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DevelopmentGuides/MigrationGuideWithoutDaemon.html">URCap Migration Guide without Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Resources.html">Resources</a></li>
 </ul>
 
@@ -85,6 +86,9 @@ There have been major changes to the way URCaps are structured, compiled, and de
 This section will walk you through building your first URCap on PolyScope 6, with a prewritten example that implements the different structure.</p>
 <div class="section" id="dockerdaemon-example">
 <h2>DockerDaemon Example<a class="headerlink" href="#dockerdaemon-example" title="Permalink to this headline">¶</a></h2>
+<p>This is a URCap example that contains a Docker Daemon.</p>
+<div class="section" id="compile-with-urcapctl">
+<h3>Compile with urcapctl<a class="headerlink" href="#compile-with-urcapctl" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Copy the example project by running</p></li>
 </ol>
@@ -94,7 +98,24 @@ This section will walk you through building your first URCap on PolyScope 6, wit
 <p>The <strong>dockerdaemon</strong> folder should now be in the /workspaces/urcapx-dev directory.
 #. Compile the URCap with the UR CLI tool by running</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl build <span class="o">[</span>urcapx_src_dir<span class="o">]</span> <span class="o">[</span>urcapx_dst_dir<span class="o">]</span>
+<span class="c1">#For this example, you&#39;d run: $ urcapctl build dockerdaemon .</span>
 </pre></div>
+</div>
+<p>You should now see the <cite>dockerdaemon-v1.0.urcapx</cite> file instead the destination folder.</p>
+</div>
+<div class="section" id="deploy-with-urcapctl">
+<h3>Deploy with urcapctl<a class="headerlink" href="#deploy-with-urcapctl" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Open up URSim, or configure your robot’s network so that it can communicate to the device you built the URCap.</p></li>
+<li><p>Navigate to the location of your built <cite>.urcapx</cite> from your VSCode terminal.</p></li>
+<li><p>Deploy the URCap by running</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>urcapctl deploy <span class="o">[</span>dst_ip_address<span class="o">]</span> <span class="o">[</span>path_to_urcapx<span class="o">]</span>
+<span class="c1">#For this example, the URSim IP Address was 172.17.0.3</span>
+<span class="c1">#so the command was: $ urcapctl deploy 172.17.0.3 dockerdaemon-v1.0.urcapx</span>
+</pre></div>
+</div>
+<p>If you have already installed the URCap, you will need to use the <cite>–replace</cite> flag.</p>
 </div>
 </div>
 </div>
@@ -104,7 +125,7 @@ This section will walk you through building your first URCap on PolyScope 6, wit
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="devenv.html" class="btn btn-neutral float-left" title="SDK Installation and Set Up" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../DevelopmentGuides.html" class="btn btn-neutral float-right" title="URCap Development Guides" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../DevelopmentGuides.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

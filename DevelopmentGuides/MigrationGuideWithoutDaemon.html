@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Resources" href="../Resources.html" />
-    <link rel="prev" title="URCap Migration Guide with Daemon" href="MigrationGuideWithDaemon.html" /> 
+    <link rel="prev" title="&lt;no title&gt;" href="../DevelopmentGuides.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,11 +45,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SDKSetup.html">SDK Set Up</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../DevelopmentGuides.html">URCap Development Guides</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="MigrationGuideWithDaemon.html">URCap Migration Guide with Daemon</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">URCap Migration Guide without Daemon</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">URCap Migration Guide without Daemon</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">URCap Migration Guide without Daemon</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Resources.html">Resources</a></li>
 </ul>
 
@@ -67,7 +64,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../DevelopmentGuides.html">URCap Development Guides</a></li>
+          <li class="breadcrumb-item"><a href="../DevelopmentGuides.html">&lt;no title&gt;</a></li>
       <li class="breadcrumb-item active">URCap Migration Guide without Daemon</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/DevelopmentGuides/MigrationGuideWithoutDaemon.rst.txt" rel="nofollow"> View page source</a>
@@ -96,7 +93,8 @@ b. <strong>manifest.yaml</strong>: Create a empty yaml file and follow the next 
 </div>
 <div class="section" id="create-manifest-yaml-file">
 <h2>Create manifest.yaml file<a class="headerlink" href="#create-manifest-yaml-file" title="Permalink to this headline">¶</a></h2>
-<p>The manifest.yaml file is linked to the pom.xml file for certain parts. You can use the below sample and change the parts as needed.</p>
+<p>The manifest.yaml file is linked to the pom.xml file for certain parts. You can use the below sample and change the parts as needed.
+ss</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">urcaps/v1.0</span>
 <span class="nt">metadata</span><span class="p">:</span>
     <span class="nt">vendorID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">com-ur-urcap-examples</span>
@@ -114,6 +112,25 @@ b. <strong>manifest.yaml</strong>: Create a empty yaml file and follow the next 
       <span class="nt">bundle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helloworldswing-1.0-SNAPSHOT.jar</span>
 </pre></div>
 </div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>pom.xml</p></th>
+<th class="head"><p>manifest.yaml</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>groupId, <em>com.ur.urcap.examples</em></p></td>
+<td><p>vendorID, <em>com-ur-urcap-examples</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>body row 2</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="copy-mydaemonswing-example">
 <h2>Copy MyDaemonSwing Example<a class="headerlink" href="#copy-mydaemonswing-example" title="Permalink to this headline">¶</a></h2>
@@ -921,7 +938,7 @@ If you are deploying to URSim, the <em>dest_ip_address</em> will be the URSim do
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="MigrationGuideWithDaemon.html" class="btn btn-neutral float-left" title="URCap Migration Guide with Daemon" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../DevelopmentGuides.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../Resources.html" class="btn btn-neutral float-right" title="Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

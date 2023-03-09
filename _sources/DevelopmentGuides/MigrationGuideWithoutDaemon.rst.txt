@@ -17,8 +17,7 @@ Create project inside the DevContainer
 Create manifest.yaml file
 --------------------------
 The manifest.yaml file is linked to the pom.xml file for certain parts. You can use the below sample and change the parts as needed.
-
-.. 
+ss
 
 .. code-block:: yaml
 
@@ -37,6 +36,14 @@ The manifest.yaml file is linked to the pom.xml file for certain parts. You can 
         osgiBundles:
         - name: helloworldswing-osgi 
           bundle: helloworldswing-1.0-SNAPSHOT.jar
+
++----------------------------------+-----------------------------------+
+| pom.xml                          | manifest.yaml                     |
++==================================+===================================+
+| groupId, *com.ur.urcap.examples* | vendorID, *com-ur-urcap-examples* |
++----------------------------------+-----------------------------------+
+| body row 2                       | ...                               |
++----------------------------------+-----------------------------------+
 
 
 Copy MyDaemonSwing Example
