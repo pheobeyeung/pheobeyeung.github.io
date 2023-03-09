@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-URCap Development Guides
-========================
-
-.. toctree::
-    :maxdepth: 2
-
-    DevelopmentGuides/MigrationGuideWithoutDaemon
-=======
 URCap Development Guides
 ========================
 
@@ -14,6 +5,5 @@ URCap Development Guides
     :maxdepth: 2
     :titlesonly:
 
-    DevelopmentGuides/MigrationGuideWithoutDaemon
->>>>>>> SDKSetup
     DevelopmentGuides/MigrationGuideWithDaemon
+    DevelopmentGuides/MigrationGuideWithoutDaemon

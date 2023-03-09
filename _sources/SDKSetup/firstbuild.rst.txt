@@ -17,7 +17,7 @@ Compile with urcapctl
 
     cp -r /tmp/sdk/samples/swing/com.ur.urcap.examples.dockerdaemon dockerdaemon
 
-The **dockerdaemon** folder should now be in the /workspaces/urcapx-dev directory. 
+The **dockerdaemon** folder should now be in the */workspaces/urcapx-dev directory.* 
 #. Compile the URCap with the UR CLI tool by running 
 
 .. code:: bash
@@ -25,13 +25,13 @@ The **dockerdaemon** folder should now be in the /workspaces/urcapx-dev director
     urcapctl build [urcapx_src_dir] [urcapx_dst_dir]
     #For this example, you'd run: $ urcapctl build dockerdaemon .
 
-You should now see the `dockerdaemon-v1.0.urcapx` file instead the destination folder.
+You should now see the *dockerdaemon-v1.0.urcapx* file instead the destination folder.
 
 Deploy with urcapctl 
 ~~~~~~~~~~~~~~~~~~~~
 
 #. Open up URSim, or configure your robot's network so that it can communicate to the device you built the URCap.
-#. Navigate to the location of your built `.urcapx` from your VSCode terminal.
+#. Navigate to the location of your built *.urcapx* from your VSCode terminal.
 #. Deploy the URCap by running 
 
 .. code:: bash
@@ -40,4 +40,4 @@ Deploy with urcapctl
     #For this example, the URSim IP Address was 172.17.0.3 
     #so the command was: $ urcapctl deploy 172.17.0.3 dockerdaemon-v1.0.urcapx
 
-If you have already installed the URCap, you will need to use the `--replace` flag.
+If you have already installed the URCap, you will need to use the *--replace* flag.
