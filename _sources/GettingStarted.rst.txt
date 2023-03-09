@@ -1,4 +1,13 @@
 Getting Started
 ===============
 
-:D 
+Welcome to Polyscope 6! The following guide will help you to install Docker and VSCode in order to get URSim up and running. Several articles will also show you how to configure file sharing to load URCaps and program/installation files.
+
+.. toctree::
+    :maxdepth: 4
+    :glob:
+
+    GettingStarted/InstallDocker
+    GettingStarted/StartURSim
+    GettingStarted/AdvancedFileSharing
+    GettingStarted/AdvancedNetworking

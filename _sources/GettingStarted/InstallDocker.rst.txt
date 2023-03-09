@@ -1,0 +1,12 @@
+Install Docker
+==============
+URSim and the SDK are hosted inside of containers which require Docker to run. Please follow the guides on Docker's website to get Docker Desktop running:
+
++-----------------------------------------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------+
+|**Operating System**                                                                                                                                                                                         |                
++=================================================================+=======================================================================+===================================================================+
+| `MacOS <https://docs.docker.com/desktop/install/mac-install/>`_ | `Windows <https://docs.docker.com/desktop/install/windows-install/>`_ | `Linux <https://docs.docker.com/desktop/install/linux-install/>`_ |
++-----------------------------------------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------+
+
+.. note:: 
+    There is a known issue running the development environment on an M1 chip Mac. They will not be supported in the current beta while this is being investigated. You can find the full list of known limitations :doc:`here <../Resources/Limitations>` .

@@ -1,0 +1,12 @@
+Starting URSim
+==============
+URSim is hosted inside a Dev Container which requires VSCode to start running. You can find a more detailed guide for installing VSCode and starting the container here.
+
+Starting URSim
+--------------
+To run URSim, open up a new terminal by hitting :kbd:`ctrl` + :kbd:`shift` + :kbd:`\`` on Windows and :kbd:`cmd` + :kbd:`shift` + :kbd:`\`` on Mac and enter the following:
+
+.. code-block:: bash
+
+    ./runURSim.sh
+
